@@ -15,7 +15,7 @@ function cargarProductos() {
                     <div class="card">
                         <img src="${prod.imagen}" alt="${prod.nombre}" />
                         <h3>${prod.nombre}</h3>
-                        <p>$${prod.precio}</p>
+                        <p><strong>$ ${prod.precio}</strong></p>
                         <button onclick="agregarCarrito(${prod.id})">
                             Agregar
                         </button>
@@ -54,7 +54,7 @@ function cargarCarrito() {
             data.forEach(item => {
                 contenedor.innerHTML += `
                     <div class="item">
-                        <span>${item.nombre} - $${item.precio}</span>
+                        <span>${item.nombre} - $ ${item.precio}</span>
                         <button onclick="eliminarItem(${item.carrito_id})">X</button>
                     </div>
                 `;
@@ -81,7 +81,7 @@ function cargarTotal() {
     fetch(`${API}/carrito/total`)
         .then(res => res.json())
         .then(data => {
-            document.getElementById("total").innerText = `$${data.total || 0}`;
+            document.getElementById("total").innerText = `$ ${data.total || 0}`;
         });
 }
 
